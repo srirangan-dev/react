@@ -1,15 +1,25 @@
 import sunrise from './assets/sunrise.jpg'
 import background from './assets/background.jpg'
 import PropTypes from 'prop-types'
+import { useState } from 'react';//hook concept in react
+
 
 function Course(props) {
 
   // conditional rendering
 
-  function BuyCourse(discount,e){
-    console.log(props.name,"purchasesd",discount,"% discount");
-    console.log(e);//evevnt
+  //let purchased=false;
 
+   const [purchased, setPurchased]= useState(false);
+  //  const [discount,setDiscount]=useState(props.price);
+
+
+
+  function BuyCourse(amt){
+    console.log(props.name,"purchasesd",amt,"% discount");
+    setPurchased(true);
+    // setDiscount(discount-amt);
+    console.log(purchased);
   }
 
  
@@ -18,8 +28,9 @@ function Course(props) {
         <img src={props.image} alt="" />
         <h3>{props.name}</h3>
         <p>{props.price}</p>
-       <button  onClick={(event)=>BuyCourse(20,event)}>Buy Now</button> 
-      </div> 
+       <button  onClick={()=>BuyCourse(20)}>Buy now</button>
+       <p> {purchased ? "Already purchases" : " Get it now"} </p>
+      </div>
     );
 
   
@@ -34,4 +45,3 @@ Course.propTypes = {
 };
 
 export default Course;
-
