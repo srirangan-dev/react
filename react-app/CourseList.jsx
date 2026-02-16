@@ -46,7 +46,7 @@ function CourseList(){
       rating: 5,
       show:true
     }
-  ];
+  ];//object
 
 
   courses.sort((x,y)=>y.rating-x.rating) //descending
@@ -79,4 +79,5 @@ const coursesList=courses.map(
 
 
 export default CourseList;
+
 
