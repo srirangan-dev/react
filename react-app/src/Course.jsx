@@ -5,20 +5,24 @@ import PropTypes from 'prop-types'
 function Course(props) {
 
   // conditional rendering
-  if (props.show === true) {
+
+  function BuyCourse(discount,e){
+    console.log(props.name,"purchasesd",discount,"% discount");
+    console.log(e);
+
+  }
+
+ 
     return (
-      <div className="card">
+     props.name  && <div className="card">
         <img src={props.image} alt="" />
         <h3>{props.name}</h3>
         <p>{props.price}</p>
-        <span>{props.rating}</span>
+       <button  onClick={(event)=>BuyCourse(20,event)}>Buy Now</button>
       </div>
     );
-  } else {
-    return (
-      <div className="card">Course not available</div>
-    );
-  }
+
+  
 }
 
 Course.propTypes = {
@@ -30,3 +34,4 @@ Course.propTypes = {
 };
 
 export default Course;
+
