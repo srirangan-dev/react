@@ -112,7 +112,7 @@ function CourseList(){
   courses.sort((x,y)=>y.rating-x.rating) //descending
 
   const  vfmCourses = courses.filter((course)=>
-    course.price<=200)
+     course.price<=200) {//It is used for filter the object  */}
 
 
 
