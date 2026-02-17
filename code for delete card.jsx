@@ -121,7 +121,8 @@ const coursesList=courses.map(
 <Course  key={course.id} name={course.name}
  image ={course.image} 
  price={course.price} rating={course.rating}
- delete= {HandleDelete} id={course.id}/>
+ delete= {HandleDelete} id={course.id}/> 
+      {/* It wiil delete cars with calling function /handle Chanage */}
 )
 
 
