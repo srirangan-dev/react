@@ -2,16 +2,12 @@ import './App.css'
 import Course from './course';
 import sunrise from './assets/sunrise.jpg'
 import background from './assets/background.jpg'
+import { useState,useEffect } from 'react';
 
     
 
 function CourseList(){
-
-
-
-  
-
-      const courses = [
+      const [courses,setCourses] =useState([
     {
 
         id:1,
@@ -46,23 +42,39 @@ function CourseList(){
       rating: 5,
       show:true
     }
-  ];//object
+  ]);
+
+
+  const[dummy,SetDummy]= useState(true);
+
+
+  useEffect(()=>{
+    console.log('use Effect called');
+    console.log(dummy);
+
+  } , [courses]);
+
+  function HandleDelete(id ){
+    console.log(id);
+    const newCourse=courses.filter((course)=>course.id!= id);
+    setCourses(newCourse);
+}
+
 
 
   courses.sort((x,y)=>y.rating-x.rating) //descending
 
   const  vfmCourses = courses.filter((course)=>
-    course.price<=200 //filter the data
-
-  )
+    course.price<=200)
 
 
 
 const coursesList=courses.map(
-    (course,index)=>
-<Course  key={index} name={course.name}
+    (course)=>
+<Course  key={course.id} name={course.name}
  image ={course.image} 
- price={course.price} rating={course.rating}/>
+ price={course.price} rating={course.rating}
+ delete= {HandleDelete} id={course.id}/>
 )
 
 
@@ -71,6 +83,8 @@ const coursesList=courses.map(
     return(
         <>
         {coursesList}
+        <button onClick={()=> {SetDummy(false)}}>  Dummy button</button>
+
         
         </>
 
@@ -79,5 +93,3 @@ const coursesList=courses.map(
 
 
 export default CourseList;
-
-
