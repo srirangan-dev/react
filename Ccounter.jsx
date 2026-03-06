@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 
 function Counter(){
     const [count,SetCount]=useState(0);
-   
-
 
     function inc(){
         SetCount(c=> c+1);
